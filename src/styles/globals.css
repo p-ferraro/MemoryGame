@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.items{
+    transition-property: filter;
+    transition-duration: 100ms;
+    filter: blur(16px);
+}
+
+.unclickable{
+    pointer-events: none;
+}

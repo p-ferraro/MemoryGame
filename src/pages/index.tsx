@@ -1,14 +1,12 @@
 import Head from "next/head";
-import Link from "next/link";
-import { removeListener, setgid, setgroups } from "process";
 import { useEffect, useState } from "react";
 
 export default function Home() {
 
-  let newGrid = [[], [], [], []]
+  const newGrid: number[][] =  [[], [], [], []]
   const [grid, setGrid] = useState([[], [], [], []])
 
-  let gridValues = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]
+  const gridValues = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]
 
   function shuffleArray(array:number[]) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -21,7 +19,7 @@ export default function Home() {
   useEffect(() => {
 
 
-    let shuffledArray = shuffleArray(gridValues)
+    const shuffledArray = shuffleArray(gridValues)
     let gridValuesIndex = 0
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 4; col++) {
@@ -32,16 +30,16 @@ export default function Home() {
     setGrid(newGrid)
   }, [])
 
-
   const [compare, setCompare] = useState([])
-  const [guess1, setGuess1] = useState([])
+  const [guess1, setGuess1] = useState<number[]>([])
   const [guessCount, setGuessCount] = useState(0)
 
   const handleCardClicked = (rowIndex: number, colIndex: number) => {
+    
 
-    let s = document.getElementById(('span ' + rowIndex.toString()) + (colIndex.toString()));
+    const s = document.getElementById(('span ' + rowIndex.toString()) + (colIndex.toString()));
     s?.classList.remove("items")
-    let d = document.getElementById(('div ' + rowIndex.toString()) + (colIndex.toString()));
+    const d = document.getElementById(('div ' + rowIndex.toString()) + (colIndex.toString()));
     d?.classList.add('unclickable')
 
     compare.push(grid[rowIndex][colIndex])
@@ -78,7 +76,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#4c6a86] to-[#393c6c]">
         <div className="container flex flex-col items-center justify-center gap-5 px-4 py-16 text-slate-200">
           <div className="cursor-pointer hover:text-slate-400" onClick={() => {
-            let shuffledArray = shuffleArray(gridValues)
+            const shuffledArray = shuffleArray(gridValues)
             let gridValuesIndex = 0
             for (let row = 0; row < 4; row++) {
               for (let col = 0; col < 4; col++) {
